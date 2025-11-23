@@ -1,0 +1,24 @@
+Program Description
+This program demonstrates how the Banker’s Algorithm works in operating systems to prevent deadlocks. The program takes input from a text file that includes the number of processes, the number of resource types, the current resource allocation, the maximum resources each process may need, and the number of resources currently available.
+After reading this information, the program calculates how many additional resources each process may still request. It then checks whether the system is in a safe state. A safe state is a situation where there exists at least one order in which all processes can complete without getting stuck or causing a deadlock.
+The program also allows the user to test how the system responds when a process requests more resources. It checks whether the request is valid and whether granting it would keep the system safe. If the request is safe, the program approves it. If it would make the system unsafe, the program restores the previous state and denies the request.
+________________________________________
+Explanation of the Banker’s Algorithm
+The Banker’s Algorithm prevents deadlocks by carefully checking every resource request before granting it. It uses three key ideas:
+1. Need = Max – Allocation
+This formula tells us how many more resources each process may still request.
+2. Safety Check
+The algorithm looks for a process whose Need can be satisfied with the currently available resources.
+If one is found, the system pretends that process finishes and releases its resources.
+This increases the available resources and may allow other processes to finish.
+If all processes can finish in some order, the system is considered safe.
+3. Checking a Resource Request
+When a process requests more resources, the algorithm checks:
+•	Whether the request is within the process’s remaining Need
+•	Whether the system has enough available resources
+•	Whether granting the request keeps the system in a safe state
+If any of these checks fail, the request is denied.
+________________________________________
+Deadlock Prevention in Banker’s Algorithm
+Deadlocks happen when processes wait forever for each other’s resources. The Banker’s Algorithm avoids this by refusing any request that could potentially lead the system into an unsafe state. As long as every request passes the safety test before being granted, the system cannot enter a deadlock.
+
